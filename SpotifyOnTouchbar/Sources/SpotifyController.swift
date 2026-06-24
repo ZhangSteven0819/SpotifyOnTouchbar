@@ -116,7 +116,7 @@ class SpotifyController {
             if it is running then
                 previous track
             end if
-        end if
+        end tell
         """)
     }
 
