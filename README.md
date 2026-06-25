@@ -10,7 +10,7 @@
 
 ## 🎬 Effect Showcase
 
-![Effect Showcase](https://raw.githubusercontent.com/ZhangSteven0819/SpotifyOnTouchbar/main/effect-showcase.png)
+![Effect Showcase](https://raw.githubusercontent.com/ZhangSteven0819/SpotifyOnTouchbar/main/assets/effect-showcase.jpg)
 
 ## ✨ Features
 
@@ -22,18 +22,18 @@
 
 ## 📦 Download
 
-**Download the latest release bundle and run [Install.command](./Install.command).**
+**Download the latest release DMG, then drag the app into Applications.**
 
 > ⚠️ **Note:** This release is for Touch Bar MacBook Pro models. The app is built as an Apple Silicon release.
 
 ## 🚀 Installation
 
-1. Download the release bundle
-2. Double-click `Install.command`
-3. Follow the on-screen install success prompt
-4. Launch **Spotify on Touchbar** from Applications if it does not open automatically
+1. Download the release DMG and open it
+2. Drag **Spotify on Touchbar.app** into the `Applications` folder shortcut
+3. Eject the DMG
+4. Launch **Spotify on Touchbar** from Applications
 
-The installer also sets up a small background helper so the app follows Spotify's open/close state.
+The app follows Spotify's open/close state in the background once launched.
 
 ## ⚠️ First Run Permissions
 
