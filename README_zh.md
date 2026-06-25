@@ -7,7 +7,7 @@
 
 ## 🎬 效果展示
 
-![效果展示](./effect-showcase.png)
+![效果展示](https://raw.githubusercontent.com/ZhangSteven0819/SpotifyOnTouchbar/main/assets/effect-showcase.jpg)
 
 ## ✨ 功能
 
@@ -19,18 +19,18 @@
 
 ## 📦 下载
 
-**下载最新发布包后，直接运行 [Install.command](./Install.command)。**
+**下载最新发布的 DMG，然后把应用拖进 Applications。**
 
 > ⚠️ **注意：** 这个版本面向带 Touch Bar 的 MacBook Pro，并且是 Apple Silicon 版本。
 
 ## 🚀 安装
 
-1. 下载发布包
-2. 双击 `Install.command`
-3. 按照安装成功提示完成安装
-4. 如果没有自动打开，再从“应用程序”中启动 **Spotify on Touchbar**
+1. 下载 DMG 并打开它
+2. 将 **Spotify on Touchbar.app** 拖到 `Applications` 文件夹快捷方式里
+3. 弹出 DMG
+4. 从“应用程序”中启动 **Spotify on Touchbar**
 
-安装器还会顺手装一个后台守护，让应用跟着 Spotify 的打开/关闭状态自动运行。
+应用启动后会在后台跟着 Spotify 的打开/关闭状态自动运行。
 
 ## ⚠️ 首次运行权限
 
