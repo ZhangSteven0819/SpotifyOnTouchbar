@@ -7,7 +7,7 @@
 
 ## 🎬 效果展示
 
-![效果展示](./assets/effect-showcase.png)
+![效果展示](./effect-showcase.png)
 
 ## ✨ 功能
 
