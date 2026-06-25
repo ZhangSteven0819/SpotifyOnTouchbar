@@ -10,7 +10,7 @@
 
 ## 🎬 Effect Showcase
 
-![Effect Showcase](./assets/effect-showcase.png)
+![Effect Showcase](./effect-showcase.png)
 
 ## ✨ Features
 
