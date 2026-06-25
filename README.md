@@ -1,10 +1,16 @@
 # 🎵 Spotify on Touchbar
 
+> 中文指南请看 [README_zh.md](./README_zh.md)
+
 > Display real-time lyrics from Spotify on your MacBook Pro's Touch Bar.
 
 [![macOS](https://img.shields.io/badge/macOS-13.0%2B-blue)](https://www.apple.com/macos)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Touch%20Bar-FF2D55?style=flat-square)](#)
+
+## 🎬 Effect Showcase
+
+![Effect Showcase](./assets/effect-showcase.png)
 
 ## ✨ Features
 
