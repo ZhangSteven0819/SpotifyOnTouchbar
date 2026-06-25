@@ -5,6 +5,10 @@
 [![macOS](https://img.shields.io/badge/macOS-13.0%2B-blue)](https://www.apple.com/macos)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
+## 🎬 效果展示
+
+![效果展示](./assets/effect-showcase.png)
+
 ## ✨ 功能
 
 - **Touch Bar 歌词显示** — 在 Touch Bar 上实时显示当前播放歌词，并带有当前行进度效果
