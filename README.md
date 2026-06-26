@@ -12,6 +12,17 @@
 
 ![Effect Showcase](https://raw.githubusercontent.com/ZhangSteven0819/SpotifyOnTouchbar/main/assets/effect-showcase.jpg)
 
+## ✅ Install Preview
+
+![Install Preview](https://raw.githubusercontent.com/ZhangSteven0819/SpotifyOnTouchbar/main/assets/install-success-banner.svg)
+
+The installer shows a success dialog after it copies the app, then confirms:
+
+- Spotify auto-follows open/close state
+- System language is detected by default
+- English is used as fallback when needed
+- Popular languages are available from the menu bar
+
 ## ✨ Features
 
 - **Touch Bar Lyrics** — Displays current playing lyrics on Touch Bar with active-line progress
@@ -32,6 +43,8 @@
 2. Drag **Spotify on Touchbar.app** into the `Applications` folder shortcut
 3. Eject the DMG
 4. Launch **Spotify on Touchbar** from Applications
+
+If the app is already installed, the installer will show that it is being checked or refreshed and then finish with a success dialog.
 
 The app follows Spotify's open/close state in the background once launched.
 
