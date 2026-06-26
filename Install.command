@@ -34,6 +34,11 @@ if [ ! -w "$INSTALL_DIR" ]; then
     DEST_APP="$USER_APP_DIR/$APP_NAME"
 fi
 
+INSTALL_STATE="正在安装并检查完整性。"
+if [ -d "$DEST_APP" ]; then
+    INSTALL_STATE="检测到已有安装，正在重新安装并检查完整性。"
+fi
+
 rm -rf "$DEST_APP"
 ditto "$SOURCE_APP" "$DEST_APP"
 chmod +x "$DEST_APP/Contents/MacOS/"*
@@ -118,5 +123,5 @@ if pgrep -x "Spotify" >/dev/null 2>&1; then
 fi
 
 osascript <<EOF
-display dialog "安装成功。\n\nSpotify on Touchbar 已安装到：\n$DEST_APP\n\n它会：\n• 随 Spotify 打开/关闭自动运行\n• 默认识别系统语言，识别不到时使用英语\n• 你也可以在菜单栏里手动切换热门语言" buttons {"好"} default button "好" with icon note
+display dialog "安装成功。\n\n$INSTALL_STATE\n\nSpotify on Touchbar 已安装到：\n$DEST_APP\n\n它会：\n• 随 Spotify 打开/关闭自动运行\n• 默认识别系统语言，识别不到时使用英语\n• 你也可以在菜单栏里手动切换热门语言" buttons {"好"} default button "好" with icon note
 EOF
