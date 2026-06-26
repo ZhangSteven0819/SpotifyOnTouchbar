@@ -9,6 +9,17 @@
 
 ![效果展示](https://raw.githubusercontent.com/ZhangSteven0819/SpotifyOnTouchbar/main/assets/effect-showcase.jpg)
 
+## ✅ 安装提示预览
+
+![安装提示预览](https://raw.githubusercontent.com/ZhangSteven0819/SpotifyOnTouchbar/main/assets/install-success-banner.svg)
+
+安装器完成后会弹出成功提示，并确认：
+
+- 会随 Spotify 打开和关闭自动运行
+- 默认识别系统语言
+- 识别不到时会使用英语
+- 菜单栏里还可以切换热门语言
+
 ## ✨ 功能
 
 - **Touch Bar 歌词显示** — 在 Touch Bar 上实时显示当前播放歌词，并带有当前行进度效果
@@ -29,6 +40,8 @@
 2. 将 **Spotify on Touchbar.app** 拖到 `Applications` 文件夹快捷方式里
 3. 弹出 DMG
 4. 从“应用程序”中启动 **Spotify on Touchbar**
+
+如果应用已经安装，安装器会提示正在检查或更新，然后显示成功提示。
 
 应用启动后会在后台跟着 Spotify 的打开/关闭状态自动运行。
 
