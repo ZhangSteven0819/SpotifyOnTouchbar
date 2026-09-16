@@ -10,7 +10,7 @@
 
 ## 🎬 Effect Showcase
 
-![Effect Showcase](https://raw.githubusercontent.com/ZhangSteven0819/SpotifyOnTouchbar/main/assets/effect-showcase.jpg)
+![Effect Showcase](https://github.com/user-attachments/assets/bf7047e9-d277-4d28-8b2f-e9bd762dc483)
 
 ## ✅ Install Preview
 
