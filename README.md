@@ -47,6 +47,17 @@ On first launch, macOS will request two permissions:
 
 Go to **System Settings → Privacy & Security → Accessibility** and add Spotify on Touchbar if macOS asks for it.
 
+> [!TIP]
+> **"App is damaged" or "Unidentified Developer" prompt on first launch?**
+>
+> Since this app is an open-source ad-hoc build without an Apple Developer certificate, macOS Gatekeeper may block it. You can resolve this using either of the following methods:
+>
+> 1. **System Settings (Recommended)**: Go to **System Settings → Privacy & Security**, scroll down to the security section, and click **"Open Anyway"**.
+> 2. **Run in Terminal**: Open Terminal and run:
+>    ```bash
+>    xattr -cr "/Applications/Spotify on Touchbar.app"
+>    ```
+
 ## 📖 Usage
 
 1. Make sure Spotify is playing a song
