@@ -12,16 +12,6 @@
 
 ![Effect Showcase](https://github.com/user-attachments/assets/bf7047e9-d277-4d28-8b2f-e9bd762dc483)
 
-## ✅ Install Preview
-
-![Install Preview](https://raw.githubusercontent.com/ZhangSteven0819/SpotifyOnTouchbar/main/assets/install-success-banner.svg)
-
-The installer shows a success dialog after it copies the app, then confirms:
-
-- Spotify auto-follows open/close state
-- System language is detected by default
-- English is used as fallback when needed
-- Popular languages are available from the menu bar
 
 ## ✨ Features
 
