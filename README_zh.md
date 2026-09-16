@@ -7,18 +7,9 @@
 
 ## 🎬 效果展示
 
-![效果展示](https://raw.githubusercontent.com/ZhangSteven0819/SpotifyOnTouchbar/main/assets/effect-showcase.jpg)
+![效果展示](https://github.com/user-attachments/assets/bf7047e9-d277-4d28-8b2f-e9bd762dc483)
 
-## ✅ 安装提示预览
 
-![安装提示预览](https://raw.githubusercontent.com/ZhangSteven0819/SpotifyOnTouchbar/main/assets/install-success-banner.svg)
-
-安装器完成后会弹出成功提示，并确认：
-
-- 会随 Spotify 打开和关闭自动运行
-- 默认识别系统语言
-- 识别不到时会使用英语
-- 菜单栏里还可以切换热门语言
 
 ## ✨ 功能
 
