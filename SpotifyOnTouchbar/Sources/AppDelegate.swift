@@ -29,6 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         setupStatusBar()
         setupLifecycleObservers()
         startPolling()
+        LaunchAgentManager.shared.setupInitialState()
     }
 
     deinit {
@@ -57,6 +58,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             showTouchBarItem.target = self
             menu.addItem(showTouchBarItem)
         }
+
+        let autoFollowItem = NSMenuItem(title: localization.string(.autoFollowSpotify), action: #selector(toggleAutoFollow(_:)), keyEquivalent: "")
+        autoFollowItem.target = self
+        autoFollowItem.state = LaunchAgentManager.shared.isAutoFollowEnabled ? .on : .off
+        menu.addItem(autoFollowItem)
 
         let languageItem = NSMenuItem(title: localization.string(.languageMenu), action: nil, keyEquivalent: "")
         languageItem.submenu = buildLanguageMenu()
@@ -105,6 +111,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let rawValue = sender.representedObject as? String,
               let language = AppLanguage(rawValue: rawValue) else { return }
         localization.setLanguage(language)
+        buildMenu()
+    }
+
+    @objc func toggleAutoFollow(_ sender: NSMenuItem) {
+        LaunchAgentManager.shared.toggleAutoFollow()
         buildMenu()
     }
 

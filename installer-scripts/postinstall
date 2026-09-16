@@ -1,0 +1,148 @@
+#!/bin/bash
+set -euo pipefail
+
+APP_NAME="Spotify on Touchbar.app"
+APP_BUNDLE_ID="com.touchbarlyrics.app"
+INSTALL_DIR="/Applications"
+CONSOLE_USER="$(stat -f %Su /dev/console 2>/dev/null || true)"
+
+if [ -z "$CONSOLE_USER" ] || [ "$CONSOLE_USER" = "root" ]; then
+    exit 0
+fi
+
+USER_HOME="$(dscl . -read "/Users/$CONSOLE_USER" NFSHomeDirectory 2>/dev/null | awk '{print $2}')"
+if [ -z "$USER_HOME" ]; then
+    USER_HOME="$(eval echo "~$CONSOLE_USER")"
+fi
+
+USER_UID="$(id -u "$CONSOLE_USER")"
+DEST_APP="$INSTALL_DIR/$APP_NAME"
+INSTALL_ROOT="$USER_HOME/Library/Application Support/Spotify on Touchbar"
+WATCH_SCRIPT="$INSTALL_ROOT/spotify-watch.sh"
+LAUNCH_AGENT_DIR="$USER_HOME/Library/LaunchAgents"
+LAUNCH_AGENT_PLIST="$LAUNCH_AGENT_DIR/com.touchbarlyrics.spotifywatcher.plist"
+
+detect_language() {
+    local locale
+    locale="$(defaults read -g AppleLocale 2>/dev/null || true)"
+    locale="${locale,,}"
+
+    case "$locale" in
+        zh*) echo "zh" ;;
+        ja*) echo "ja" ;;
+        ko*) echo "ko" ;;
+        es*) echo "es" ;;
+        fr*) echo "fr" ;;
+        de*) echo "de" ;;
+        pt*) echo "pt" ;;
+        *) echo "en" ;;
+    esac
+}
+
+show_success_dialog() {
+    local lang="$1"
+    case "$lang" in
+        zh)
+            osascript <<OSA
+display dialog "安装成功。" & return & return & "Spotify on Touchbar 已安装到：" & return & "$DEST_APP" & return & return & "它会：" & return & "• 随 Spotify 打开/关闭自动运行" & return & "• 默认识别系统语言，识别不到时使用英语" & return & "• 你也可以在菜单栏里手动切换热门语言" buttons {"好"} default button "好" with icon note
+OSA
+            ;;
+        ja)
+            osascript <<OSA
+display dialog "インストールが完了しました。" & return & return & "Spotify on Touchbar のインストール先：" & return & "$DEST_APP" & return & return & "動作：" & return & "• Spotify の起動 / 終了に合わせて自動実行" & return & "• 既定ではシステム言語を使用し、未対応時は英語を使用" & return & "• メニューバーから人気言語を切り替え可能" buttons {"OK"} default button "OK" with icon note
+OSA
+            ;;
+        ko)
+            osascript <<OSA
+display dialog "설치가 완료되었습니다." & return & return & "Spotify on Touchbar 설치 위치:" & return & "$DEST_APP" & return & return & "동작:" & return & "• Spotify 실행 / 종료에 맞춰 자동 실행" & return & "• 기본적으로 시스템 언어를 따르고, 인식 실패 시 영어 사용" & return & "• 메뉴 막대에서 자주 쓰는 언어로 전환 가능" buttons {"확인"} default button "확인" with icon note
+OSA
+            ;;
+        es|fr|de|pt)
+            osascript <<OSA
+display dialog "Installation terminée." & return & return & "Spotify on Touchbar a été installé dans :" & return & "$DEST_APP" & return & return & "Comportement :" & return & "• Démarre et s'arrête avec Spotify" & return & "• Suit la langue du système par défaut, et bascule vers l'anglais si besoin" & return & "• La langue peut aussi être changée depuis la barre des menus" buttons {"OK"} default button "OK" with icon note
+OSA
+            ;;
+        *)
+            osascript <<OSA
+display dialog "Installation complete." & return & return & "Spotify on Touchbar was installed to:" & return & "$DEST_APP" & return & return & "It will:" & return & "• Start and stop with Spotify" & return & "• Follow the system language by default, or use English if detection fails" & return & "• Let you switch popular languages from the menu bar" buttons {"OK"} default button "OK" with icon note
+OSA
+            ;;
+    esac
+}
+
+mkdir -p "$INSTALL_ROOT" "$LAUNCH_AGENT_DIR"
+
+cat > "$WATCH_SCRIPT" <<'EOF'
+#!/bin/bash
+set -euo pipefail
+
+APP_BUNDLE_ID="com.touchbarlyrics.app"
+APP_NAME="Spotify on Touchbar"
+APP_PATH="__APP_PATH__"
+CHECK_INTERVAL=4
+
+spotify_running() {
+    pgrep -x "Spotify" >/dev/null 2>&1
+}
+
+app_running() {
+    pgrep -x "$APP_NAME" >/dev/null 2>&1
+}
+
+launch_app() {
+    open -gj "$APP_PATH"
+}
+
+quit_app() {
+    /usr/bin/osascript -e "tell application id \"$APP_BUNDLE_ID\" to quit" >/dev/null 2>&1 || true
+}
+
+while true; do
+    if spotify_running; then
+        if ! app_running; then
+            launch_app
+        fi
+    else
+        if app_running; then
+            quit_app
+        fi
+    fi
+    sleep "$CHECK_INTERVAL"
+done
+EOF
+
+perl -0pi -e "s|__APP_PATH__|$DEST_APP|g" "$WATCH_SCRIPT"
+chmod +x "$WATCH_SCRIPT"
+
+cat > "$LAUNCH_AGENT_PLIST" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.touchbarlyrics.spotifywatcher</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>$WATCH_SCRIPT</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+</dict>
+</plist>
+EOF
+
+launchctl bootout "gui/$USER_UID" "$LAUNCH_AGENT_PLIST" >/dev/null 2>&1 || true
+launchctl bootstrap "gui/$USER_UID" "$LAUNCH_AGENT_PLIST" >/dev/null 2>&1 || true
+launchctl enable "gui/$USER_UID/com.touchbarlyrics.spotifywatcher" >/dev/null 2>&1 || true
+
+xattr -dr com.apple.quarantine "$DEST_APP" >/dev/null 2>&1 || true
+chmod -R a+rX "$DEST_APP" >/dev/null 2>&1 || true
+
+if pgrep -x "Spotify" >/dev/null 2>&1; then
+    open -gj "$DEST_APP"
+fi
+
+show_success_dialog "$(detect_language)"

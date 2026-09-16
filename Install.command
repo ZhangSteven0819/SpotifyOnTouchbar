@@ -2,7 +2,7 @@
 set -euo pipefail
 
 APP_NAME="Spotify on Touchbar.app"
-APP_BUNDLE_ID="com.shiyangzheng.touchbarlyrics"
+APP_BUNDLE_ID="com.touchbarlyrics.app"
 INSTALL_DIR="/Applications"
 USER_APP_DIR="$HOME/Applications"
 INSTALL_ROOT="$HOME/Library/Application Support/Spotify on Touchbar"
@@ -55,7 +55,7 @@ cat > "$WATCH_SCRIPT" <<'EOF'
 #!/bin/bash
 set -euo pipefail
 
-APP_BUNDLE_ID="com.shiyangzheng.touchbarlyrics"
+APP_BUNDLE_ID="__APP_BUNDLE_ID__"
 APP_NAME="Spotify on Touchbar"
 APP_PATH="__APP_PATH__"
 CHECK_INTERVAL=4
@@ -90,6 +90,7 @@ while true; do
 done
 EOF
 
+perl -0pi -e "s|__APP_BUNDLE_ID__|$APP_BUNDLE_ID|g" "$WATCH_SCRIPT"
 perl -0pi -e "s|__APP_PATH__|$DEST_APP|g" "$WATCH_SCRIPT"
 
 chmod +x "$WATCH_SCRIPT"

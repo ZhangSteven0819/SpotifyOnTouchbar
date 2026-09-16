@@ -1,0 +1,11 @@
+# Release & build artifacts
+*.dmg
+*.pkg
+*.zip
+build/
+release-artifacts/
+release-build/
+release-dmg-stage/
+release-pkg-build/
+icon-build/
+.DS_Store

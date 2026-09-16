@@ -13,8 +13,11 @@ mkdir -p "$BUILD_DIR"
 echo ""
 echo "📦 编译中..."
 
-swiftc \
-    -sdk $(xcrun --show-sdk-path) \
+SWIFTC="/Library/Developer/CommandLineTools/usr/bin/swiftc"
+SDK="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
+
+"$SWIFTC" \
+    -sdk "$SDK" \
     -target arm64-apple-macos13.0 \
     -framework Cocoa \
     -I "$SOURCES" \
@@ -23,6 +26,7 @@ swiftc \
     "$SOURCES/main.swift" \
     "$SOURCES/AppDelegate.swift" \
     "$SOURCES/AppLocalization.swift" \
+    "$SOURCES/LaunchAgentManager.swift" \
     "$SOURCES/SpotifyController.swift" \
     "$SOURCES/TouchBarController.swift" \
     "$SOURCES/LRCParser.swift" \

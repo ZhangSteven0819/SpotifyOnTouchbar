@@ -109,6 +109,7 @@ final class AppLocalization {
         case syncingSpotify
         case loadingLyrics
         case noLyricsFound
+        case autoFollowSpotify
 
         var defaultValue: String {
             switch self {
@@ -122,6 +123,7 @@ final class AppLocalization {
             case .syncingSpotify: return "正在同步 Spotify…"
             case .loadingLyrics: return "加载歌词中..."
             case .noLyricsFound: return "未找到歌词"
+            case .autoFollowSpotify: return "随 Spotify 自动启停"
             }
         }
     }
@@ -136,7 +138,8 @@ final class AppLocalization {
         .notPlaying: "Not playing",
         .syncingSpotify: "Syncing Spotify…",
         .loadingLyrics: "Loading lyrics...",
-        .noLyricsFound: "No lyrics found"
+        .noLyricsFound: "No lyrics found",
+        .autoFollowSpotify: "Follow Spotify Launch & Quit"
     ]
 
     private let simplifiedChinese: [Key: String] = [
@@ -149,7 +152,8 @@ final class AppLocalization {
         .notPlaying: "未在播放",
         .syncingSpotify: "正在同步 Spotify…",
         .loadingLyrics: "加载歌词中...",
-        .noLyricsFound: "未找到歌词"
+        .noLyricsFound: "未找到歌词",
+        .autoFollowSpotify: "随 Spotify 自动启停"
     ]
 
     private let traditionalChinese: [Key: String] = [
@@ -162,7 +166,8 @@ final class AppLocalization {
         .notPlaying: "未在播放",
         .syncingSpotify: "正在同步 Spotify…",
         .loadingLyrics: "載入歌詞中...",
-        .noLyricsFound: "未找到歌詞"
+        .noLyricsFound: "未找到歌詞",
+        .autoFollowSpotify: "隨 Spotify 自動啟停"
     ]
 
     private let japanese: [Key: String] = [
@@ -175,7 +180,8 @@ final class AppLocalization {
         .notPlaying: "再生中ではありません",
         .syncingSpotify: "Spotify を同期中…",
         .loadingLyrics: "歌詞を読み込み中...",
-        .noLyricsFound: "歌詞が見つかりません"
+        .noLyricsFound: "歌詞が見つかりません",
+        .autoFollowSpotify: "Spotify と自動連動"
     ]
 
     private let korean: [Key: String] = [
@@ -188,7 +194,8 @@ final class AppLocalization {
         .notPlaying: "재생 중이 아닙니다",
         .syncingSpotify: "Spotify 동기화 중…",
         .loadingLyrics: "가사를 불러오는 중...",
-        .noLyricsFound: "가사를 찾을 수 없습니다"
+        .noLyricsFound: "가사를 찾을 수 없습니다",
+        .autoFollowSpotify: "Spotify와 자동 연동"
     ]
 
     private let spanish: [Key: String] = [
@@ -201,7 +208,8 @@ final class AppLocalization {
         .notPlaying: "No está reproduciendo",
         .syncingSpotify: "Sincronizando Spotify…",
         .loadingLyrics: "Cargando letras...",
-        .noLyricsFound: "No se encontraron letras"
+        .noLyricsFound: "No se encontraron letras",
+        .autoFollowSpotify: "Seguir inicio/cierre de Spotify"
     ]
 
     private let french: [Key: String] = [
@@ -214,7 +222,8 @@ final class AppLocalization {
         .notPlaying: "Aucune lecture",
         .syncingSpotify: "Synchronisation de Spotify…",
         .loadingLyrics: "Chargement des paroles...",
-        .noLyricsFound: "Aucune parole trouvée"
+        .noLyricsFound: "Aucune parole trouvée",
+        .autoFollowSpotify: "Suivre le lancement de Spotify"
     ]
 
     private let german: [Key: String] = [
@@ -227,7 +236,8 @@ final class AppLocalization {
         .notPlaying: "Wird nicht abgespielt",
         .syncingSpotify: "Spotify wird synchronisiert…",
         .loadingLyrics: "Texte werden geladen...",
-        .noLyricsFound: "Keine Texte gefunden"
+        .noLyricsFound: "Keine Texte gefunden",
+        .autoFollowSpotify: "Spotify automatisch folgen"
     ]
 
     private let portuguese: [Key: String] = [
@@ -240,6 +250,7 @@ final class AppLocalization {
         .notPlaying: "Sem reprodução",
         .syncingSpotify: "Sincronizando o Spotify…",
         .loadingLyrics: "Carregando letras...",
-        .noLyricsFound: "Nenhuma letra encontrada"
+        .noLyricsFound: "Nenhuma letra encontrada",
+        .autoFollowSpotify: "Seguir abertura do Spotify"
     ]
 }
